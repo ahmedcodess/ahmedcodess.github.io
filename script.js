@@ -1,23 +1,15 @@
-// Scroll animation
-const elements = document.querySelectorAll('.fade-in, .slide-in');
+const quotes = [
+  "Believe you can and you're halfway there.",
+  "Today is going to be a great and productive day.",
+  "No matter how hard it is, you can do it.",
+  "Don’t watch the clock; do what it does. Keep going.",
+  "Good things are coming.",
+  "Dream big. Start small. Act now.",
+  "Success is not final, failure is not fatal: it is the courage to continue that counts."
+];
 
-const revealOnScroll = () => {
-  const windowHeight = window.innerHeight;
-  elements.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < windowHeight - 100) {
-      el.classList.add('visible');
-    }
-  });
-};
-
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
-
-// Dark/light toggle
-document.getElementById('modeToggle').addEventListener('click', () => {
-  document.body.classList.toggle('light-mode');
-  const isLight = document.body.classList.contains('light-mode');
-  document.getElementById('modeToggle').textContent = isLight ? '☀️' : '🌙';
-});
-
+function generateQuote() {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quoteText = quotes[randomIndex];
+  document.getElementById('quote').textContent = quoteText;
+}
